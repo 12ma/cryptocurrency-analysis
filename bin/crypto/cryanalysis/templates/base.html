@@ -11,8 +11,8 @@
     <title>Cryptocurrency Analysis</title>
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Cryptocurrency Analysis</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar">
+  <a class="navbar-brand" href="{% url 'home' %}">Cryptocurrency Analysis</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,14 +21,15 @@
     <ul class="navbar-nav mr-auto">
      
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="{% url 'prices' %}">Lookup prices</a>
       </li>
       
       
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+    <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'prices' %}">
+   {% csrf_token %} 
+      <input class="form-control mr-sm-2" type="search" placeholder="Lookup Crypto" aria-label="Search" name="quote">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Lookup</button>
     </form>
   </div>
 </nav>
